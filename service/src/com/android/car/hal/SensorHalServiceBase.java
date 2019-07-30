@@ -38,7 +38,7 @@ import java.util.List;
  */
 public abstract class SensorHalServiceBase extends HalServiceBase implements SensorBase {
     private static final String TAG = CarLog.concatTag(CarLog.TAG_SENSOR,
-                                                       SensorHalServiceBase.class);
+                                                      SensorHalServiceBase.class);                                                  
     protected static final boolean DBG = false;
 
     private boolean mIsReady = false;

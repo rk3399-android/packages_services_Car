@@ -15,7 +15,7 @@
  */
 
 package android.support.car.hardware;
-
+import android.util.Log;
 import android.location.GpsSatellite;
 import android.location.Location;
 import android.os.SystemClock;
@@ -33,7 +33,7 @@ import static android.support.annotation.RestrictTo.Scope.GROUP_ID;
  * results in an {@code UnsupportedOperationException} being thrown.
  */
 public class CarSensorEvent {
-
+	private static final String TAG = "CarSensorEvent";
 
     /**
      * Status for {@link CarSensorManager#SENSOR_TYPE_DRIVING_STATUS}: No restrictions.
@@ -618,16 +618,22 @@ public class CarSensorEvent {
         checkType(CarSensorManager.SENSOR_TYPE_FUEL_LEVEL);
         int level = -1;
         float range = -1;
-        if (floatValues != null) {
+
+        /*if (floatValues != null) {
+			Log.e(TAG, "non null");
+			Log.e(TAG, "fueldata"+floatValues[0]);
             if (floatValues[INDEX_FUEL_LEVEL_IN_PERCENTILE] >= 0) {
                 level = (int) floatValues[INDEX_FUEL_LEVEL_IN_PERCENTILE];
+                Log.e(TAG, "level" + level);
             }
 
             if (floatValues[INDEX_FUEL_LEVEL_IN_DISTANCE] >= 0) {
                 range = floatValues[INDEX_FUEL_LEVEL_IN_DISTANCE];
+                Log.e(TAG, "range" + range);
             }
-        }
+        }*/
         boolean lowFuelWarning = (intValues[0] == 1);
+        Log.e(TAG, "lowFuelWarning" + lowFuelWarning);
         return new FuelLevelData(timestamp, level, range, lowFuelWarning);
     }
 
